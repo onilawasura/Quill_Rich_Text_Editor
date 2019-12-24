@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
+import { QuillEditorComponent } from 'ngx-quill/src/quill-editor.component';
+import Quill from 'quill';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,8 +23,15 @@ export class HomeComponent implements OnInit {
   config = {
     toolbar: [
       ['bold', 'italic', 'underline'],
-      ['code-block']
+      ['code-block'],
+      ['link', 'image', 'video'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'color': [] }, { 'background': [] }],
     ]
+  }
+
+  configViewer = {
+    toolbar: false,
   }
 
   constructor() { }
@@ -35,12 +45,12 @@ export class HomeComponent implements OnInit {
 
   onSubmit(){
     this.editorContent = this.editorForm.get('editor').value;
-    console.log(this.editorForm.get('editor').value);
+    //console.log(this.editorForm.get('editor').value);
   }
 
   maxLength(e){
 
-    console.log(e.editor.getLength());
+    //console.log(e.editor.getLength());
     if(e.editor.getLength() > 10){
       e.editor.deleteText(1000, e.editor.getLength());
     }

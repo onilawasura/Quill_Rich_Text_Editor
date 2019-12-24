@@ -8,7 +8,7 @@ import { AddContentComponent } from './add-content/add-content.component';
 import { ViewContentComponent } from './view-content/view-content.component';
 
 import { QuillModule } from 'ngx-quill'
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -27,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     QuillModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],

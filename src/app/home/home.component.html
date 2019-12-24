@@ -9,15 +9,17 @@
                 <div class="form-group">
                     <label for="editor"><h3>Editor</h3></label>
                     <quill-editor [style]="editorStyle" [modules]="config" (onContentChanged)="maxLength($event)" formControlName="editor"></quill-editor>
-                    <span *ngIf="editorForm.get('editor').value != null">{{ editorForm.get('editor').value }}</span>
-                    <span *ngIf="editorForm.get('editor').value != null">{{ 1000 - editorForm.get('editor').value.length }}</span>
+                    <!-- <span *ngIf="editorForm.get('editor').value != null">{{ editorForm.get('editor').value }}</span>
+                    <span *ngIf="editorForm.get('editor').value != null">{{ 1000 - editorForm.get('editor').value.length }}</span> -->
                 </div>
                 <button class="btn btn-primary mt-3">Submit</button>
             </form> 
         </div>
         <div class="col-md-4 bg-light p-4">
             <h3>Output</h3>
-            <p class="my-5" [innerHtml]="editorContent"></p>
+            <!-- <p class="my-5" [innerHtml]="editorContent"></p> -->
+            <quill-editor [style]="editorStyle" [modules]="configViewer" [readOnly]="true" [ngModel]="editorContent" ></quill-editor>
+           
         </div>
     </div>
 </div>
