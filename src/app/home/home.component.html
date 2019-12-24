@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand ml-auto mr-auto" href="#">Quill js editor with angular</a>
+</nav>
+
+<div class="container">
+    <div class="row pt-5">
+        <div class="col-md-8">
+             <form [formGroup]="editorForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="editor"><h3>Editor</h3></label>
+                    <quill-editor [style]="editorStyle" [modules]="config" (onContentChanged)="maxLength($event)" formControlName="editor"></quill-editor>
+                    <span *ngIf="editorForm.get('editor').value != null">{{ editorForm.get('editor').value }}</span>
+                    <span *ngIf="editorForm.get('editor').value != null">{{ 1000 - editorForm.get('editor').value.length }}</span>
+                </div>
+                <button class="btn btn-primary mt-3">Submit</button>
+            </form> 
+        </div>
+        <div class="col-md-4 bg-light p-4">
+            <h3>Output</h3>
+            <p class="my-5" [innerHtml]="editorContent"></p>
+        </div>
+    </div>
+</div>
